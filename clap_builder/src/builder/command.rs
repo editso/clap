@@ -1567,6 +1567,16 @@ impl Command {
         }
     }
 
+    /// DisableDefaults
+    #[inline]
+    pub fn disable_defaults(self, yes: bool) -> Self{
+        if yes {
+            self.global_setting(AppSettings::DisableDefaults)
+        } else {
+            self.unset_global_setting(AppSettings::DisableDefaults)
+        }
+    }
+
     /// Disables colorized help messages.
     ///
     /// <div class="warning">

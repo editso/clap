@@ -69,3 +69,4 @@ pub(crate) use self::str::Inner as StrInner;
 pub(crate) use action::CountType;
 pub(crate) use arg_settings::{ArgFlags, ArgSettings};
 pub(crate) use command::AppExt;
+pub(crate) use app_settings::AppSettings;

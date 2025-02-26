@@ -4,7 +4,7 @@ use crate::Arg;
 use crate::Command;
 
 #[derive(Default, Copy, Clone, Debug, PartialEq, Eq)]
-pub(crate) struct AppFlags(u32);
+pub(crate) struct AppFlags(u64);
 
 impl AppFlags {
     pub(crate) fn set(&mut self, setting: AppSettings) {
@@ -79,10 +79,11 @@ pub(crate) enum AppSettings {
     ColorNever,
     Built,
     BinNameBuilt,
+    DisableDefaults
 }
 
 impl AppSettings {
-    fn bit(self) -> u32 {
+    fn bit(self) -> u64 {
         1 << (self as u8)
     }
 }

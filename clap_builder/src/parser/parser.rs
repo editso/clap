@@ -64,6 +64,8 @@ impl<'cmd> Parser<'cmd> {
         }));
         ok!(self.resolve_pending(matcher));
 
+        
+
         #[cfg(feature = "env")]
         ok!(self.add_env(matcher));
         ok!(self.add_defaults(matcher));
@@ -1435,6 +1437,10 @@ impl<'cmd> Parser<'cmd> {
 
     fn add_defaults(&self, matcher: &mut ArgMatcher) -> ClapResult<()> {
         debug!("Parser::add_defaults");
+        
+        if self.cmd.is_set(crate::builder::AppSettings::DisableDefaults) {
+            return Ok(())
+        }
 
         for arg in self.cmd.get_arguments() {
             debug!("Parser::add_defaults:iter:{}:", arg.get_id());
